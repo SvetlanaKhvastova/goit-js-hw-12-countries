@@ -15,6 +15,9 @@ function countrySearchInputHandler(ev) {
 
   const inputValue = ev.target.value;
 
+  // не делать запрос на АПИ если инпут пустой
+  if (!inputValue) return;
+
   fetchCountries(inputValue).then(updateCountriesMarkup);
 }
 
@@ -22,6 +25,7 @@ function openCountryFromList(ev) {
   clearArticlesCountries();
 
   const elCountry = ev.target.textContent;
+  if (!elCountry) return;
   input.value = elCountry;
 
   fetchCountries(elCountry).then(updateCountriesMarkup);
